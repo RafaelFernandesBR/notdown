@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Criar";
+}
+
+<h2>Criar nota</h2>
+<p>Crie sua nota/anotação nesta página.</p>
+
+<form method="post" action="/save">
+
+    <div class="form-group">
+        <label for="nota">Nota:</label>
+        <textarea class="form-control" id="nota" name="nota" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

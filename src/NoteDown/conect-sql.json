@@ -1,0 +1,6 @@
+{
+  "Server": "localhost",
+  "Database": "db",
+  "user": "user",
+  "senha": "password"
+}

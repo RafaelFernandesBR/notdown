@@ -1,0 +1,7 @@
+﻿@{
+    ViewData["Title"] = "Exibir";
+}
+
+<div>
+    @NoteDown.Markdown.Markdown.ParseHtmlString(ViewBag.Nota.conteudo)
+</div>
