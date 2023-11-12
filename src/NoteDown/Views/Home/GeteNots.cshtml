@@ -3,10 +3,11 @@
 }
 
 <div>
+    <button id="editButton" class="btn btn-primary" data-nota-id="@ViewBag.Nota.id">Editar</button>
+
     <div id="viewMode">
         @NoteDown.Markdown.Markdown.ParseHtmlString(ViewBag.Nota.conteudo)
     </div>
-    <button id="editButton" class="btn btn-primary" data-nota-id="@ViewBag.Nota.id">Editar</button>
 
     <div id="editMode" style="display: none;">
         <textarea id="editTextArea" class="form-control" rows="4">@ViewBag.Nota.conteudo</textarea>
