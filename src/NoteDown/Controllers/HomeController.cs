@@ -38,7 +38,7 @@ namespace NoteDown.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPatch]
         [Route("update/{id}")]
         public IActionResult UpdateNots(string id, [FromBody] string nota)
         {

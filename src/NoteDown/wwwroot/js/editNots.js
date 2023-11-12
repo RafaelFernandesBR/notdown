@@ -13,9 +13,9 @@ document.getElementById('saveButton').addEventListener('click', function () {
     var id = document.getElementById('editButton').getAttribute('data-nota-id');
     var nota = document.getElementById('editTextArea').value;
 
-    // Envia a atualização via AJAX
+    // Envia a atualização via AJAX usando PATCH
     fetch('/update/' + id, {
-        method: 'POST',
+        method: 'PATCH',  // Alteração aqui
         headers: {
             'Content-Type': 'application/json'
         },
