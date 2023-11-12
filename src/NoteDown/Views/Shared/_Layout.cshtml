@@ -7,32 +7,60 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NoteDown.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            padding-top: 56px; /* Adjusted top padding to accommodate the fixed navbar */
+        }
+
+        header {
+            background-color: #f8f9fa; /* Light gray background for the header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow for depth */
+        }
+
+        h1 {
+            margin-bottom: 0; /* Remove margin bottom for the header */
+        }
+
+        .navbar {
+            padding: 14px 0; /* Adjusted padding for the navbar */
+        }
+
+        main {
+            margin-top: 20px; /* Added margin top for the main content */
+        }
+
+        footer {
+            padding: 20px 0; /* Added padding for the footer */
+            background-color: #f8f9fa; /* Light gray background for the footer */
+            margin-top: 20px; /* Added margin top for the footer */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Note down</h1>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
+            <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NoteDown</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
@@ -42,6 +70,7 @@
             &copy; 2023 - NoteDown - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

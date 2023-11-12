@@ -2,7 +2,13 @@
     ViewData["Title"] = "Home";
 }
 
-<markdown normalize-whitespace="true">
-    Bem vindo ao site *Note Down*!
-</markdown>
-<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Novo</a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <markdown normalize-whitespace="true">
+                Bem-vindo ao site *Note Down*!
+            </markdown>
+            <a class="btn btn-primary mt-3" asp-area="" asp-controller="Home" asp-action="Create">Novo</a>
+        </div>
+    </div>
+</div>

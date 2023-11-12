@@ -2,15 +2,21 @@
     ViewData["Title"] = "Erro ao salvar nota";
 }
 
-<h2>Ocorreu um erro ao salvar a nota</h2>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-danger">Ocorreu um erro ao salvar a nota</h2>
 
-<p>Desculpe, mas não foi possível salvar a nota no momento. Por favor, tente novamente mais tarde.</p>
+            <p>Desculpe, mas não foi possível salvar a nota no momento. Por favor, tente novamente mais tarde.</p>
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-{
-    <p>Detalhes do erro: @ViewBag.ErrorMessage</p>
-}
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <p class="text-danger">Detalhes do erro: @ViewBag.ErrorMessage</p>
+            }
 
-<p>
-    <a asp-action="Create" asp-controller="Home">Voltar para a criação de notas</a>
-</p>
+            <p>
+                <a class="btn btn-primary" asp-action="Create" asp-controller="Home">Voltar para a criação de notas</a>
+            </p>
+        </div>
+    </div>
+</div>
