@@ -80,6 +80,28 @@ namespace NoteDown.Data.Models
             }
         }
 
+        public NotsInput UpdateNots(string id, string nota)
+        {
+            string query = $"UPDATE {TableNots} SET conteudo = @Conteudo WHERE id = @Id";
+
+            var parametros = new DynamicParameters();
+            parametros.Add("@Id", id);
+            parametros.Add("@Conteudo", nota);
+
+            using (IDbConnection connection = conm)
+            {
+                try
+                {
+                    connection.Execute(query, parametros);
+                    return new NotsInput { Id = id, Conteudo = nota };
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ocorreu um erro ao atualizar a nota no banco de dados.", ex);
+                }
+            }
+        }
+
         private string GenerateUniqueID()
         {
             return Guid.NewGuid().ToString("N").Substring(0, 16);

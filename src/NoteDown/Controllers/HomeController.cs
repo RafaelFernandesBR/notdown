@@ -29,12 +29,29 @@ namespace NoteDown.Controllers
 
             if (nota == null)
             {
-                // Trate o caso em que nenhuma nota é encontrada
+                _logger.LogInformation($"Nem uma nota encontrada para o ID {id}");
+
                 return NotFound();
             }
 
             ViewBag.Nota = nota;
             return View();
+        }
+
+        [HttpPost]
+        [Route("update/{id}")]
+        public IActionResult UpdateNots(string id, [FromBody] string nota)
+        {
+            try
+            {
+                var updatedNota = _dataModel.UpdateNots(id, nota);
+                return Json(updatedNota);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return BadRequest(new { error = "Ocorreu um erro ao atualizar a nota." });
+            }
         }
 
         [Route("create")]
@@ -59,6 +76,8 @@ namespace NoteDown.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
+
                 // Lide com erros, por exemplo, exibindo uma mensagem de erro
                 ViewBag.ErrorMessage = "Ocorreu um erro ao salvar a nota.";
                 return View("Error"); // Pode criar uma view específica para erros
