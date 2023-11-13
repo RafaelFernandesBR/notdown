@@ -1,5 +1,5 @@
 {
-  "Server": "localhost",
+  "Server": "basenotedown",
   "Database": "db",
   "user": "user",
   "senha": "password"
