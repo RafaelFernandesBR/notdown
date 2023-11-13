@@ -17,6 +17,7 @@ services:
       # Where our data will be persisted
     volumes:
       - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/bacub:/var/lib/mysql/ # Backup folder in host mapped 
     networks:
       - tral
 
