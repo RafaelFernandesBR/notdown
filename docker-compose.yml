@@ -16,9 +16,10 @@ services:
       MYSQL_ROOT_PASSWORD: 'password'
       # Where our data will be persisted
     volumes:
+      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./db/bacub:/var/lib/mysql/ # Backup folder in host mapped 
     networks:
-      - tral
+      - ndown
 
   notdown:
     image: notdown:latest
@@ -32,8 +33,8 @@ services:
     depends_on:
       - database
     networks:
-      - tral
+      - ndown
 
 networks:
-  tral:
+  ndown:
     driver: bridge
