@@ -4,6 +4,8 @@ using Dapper;
 using System.Data;
 using NoteDown.Data.IModels;
 using Microsoft.Extensions.Logging;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace NoteDown.Data.Models
 {
@@ -13,15 +15,11 @@ namespace NoteDown.Data.Models
         private readonly ILogger<DataModel> _logger;
         string TableNots;
 
-        public DataModel(ILogger<DataModel> logger)
+        public DataModel(ILogger<DataModel> logger, IConfiguration configuration)
         {
-            //get a file json
-            StreamReader r = new StreamReader("conect-sql.json");
-            string readFile = r.ReadToEnd();
-            conectSql conectData = JsonConvert.DeserializeObject<conectSql>(readFile);
+            string? connectionString = configuration.GetConnectionString("MySqlConnection");
 
-            this.conm = new MySqlConnection("Server=" + conectData.server + ";Database=" + conectData.Database + ";Uid=" + conectData.user + ";Pwd=" + conectData.senha + ";");
-
+            this.conm = new MySqlConnection(connectionString);
             _logger = logger;
             TableNots = "nots";
         }

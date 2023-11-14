@@ -2,6 +2,7 @@ using NoteDown.Data.IModels;
 using NoteDown.Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json");
 
 // Add services to the container.
 builder.Logging.AddConsole();  // Adiciona o provedor de log do console
