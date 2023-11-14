@@ -4,6 +4,7 @@ using NoteDown.Data.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Logging.AddConsole();  // Adiciona o provedor de log do console
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDataModel, DataModel>();
 builder.Services.AddMemoryCache();

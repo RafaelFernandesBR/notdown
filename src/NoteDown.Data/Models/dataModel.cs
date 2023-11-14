@@ -3,15 +3,17 @@ using Newtonsoft.Json;
 using Dapper;
 using System.Data;
 using NoteDown.Data.IModels;
+using Microsoft.Extensions.Logging;
 
 namespace NoteDown.Data.Models
 {
     public class DataModel : IDataModel
     {
         private MySqlConnection conm { get; set; }
+        private readonly ILogger<DataModel> _logger;
         string TableNots;
 
-        public DataModel()
+        public DataModel(ILogger<DataModel> logger)
         {
             //get a file json
             StreamReader r = new StreamReader("conect-sql.json");
@@ -20,6 +22,7 @@ namespace NoteDown.Data.Models
 
             this.conm = new MySqlConnection("Server=" + conectData.server + ";Database=" + conectData.Database + ";Uid=" + conectData.user + ";Pwd=" + conectData.senha + ";");
 
+            _logger = logger;
             TableNots = "nots";
         }
 
@@ -39,6 +42,7 @@ namespace NoteDown.Data.Models
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogError(ex.Message);
                     throw new Exception("Ocorreu um erro ao obter os dados da nota.", ex);
                 }
             }
@@ -64,13 +68,14 @@ namespace NoteDown.Data.Models
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex) when (ex.Number == 1062)
                     {
+                        _logger.LogError(ex.Message);
                         // Código 1062 indica violação de chave única (colisão de IDs)
                         // Incrementamos a tentativa e tentamos gerar um novo ID
                         currentAttempt++;
                     }
                     catch (Exception ex)
                     {
-                        // Outros erros são relançados
+                        _logger.LogError(ex.Message);
                         throw new Exception("Ocorreu um erro ao adicionar a nota ao banco de dados.", ex);
                     }
                 }
@@ -97,6 +102,7 @@ namespace NoteDown.Data.Models
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogError(ex.Message);
                     throw new Exception("Ocorreu um erro ao atualizar a nota no banco de dados.", ex);
                 }
             }
