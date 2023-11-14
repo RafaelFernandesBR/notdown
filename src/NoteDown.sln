@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDown", "NoteDown\NoteDown.csproj", "{E2B0ACE5-FFAD-4099-A3EA-470350FC0E1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDown.Data", "RifaDigital.Data\NoteDown.Data.csproj", "{404F5D7C-C395-41C0-B4D7-B57AA12B05D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDown.Data", "NoteDown.Data\NoteDown.Data.csproj", "{A57CCC07-2A8E-4A7C-A933-0CB6AB6BAFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E2B0ACE5-FFAD-4099-A3EA-470350FC0E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2B0ACE5-FFAD-4099-A3EA-470350FC0E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2B0ACE5-FFAD-4099-A3EA-470350FC0E1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{404F5D7C-C395-41C0-B4D7-B57AA12B05D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{404F5D7C-C395-41C0-B4D7-B57AA12B05D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{404F5D7C-C395-41C0-B4D7-B57AA12B05D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{404F5D7C-C395-41C0-B4D7-B57AA12B05D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57CCC07-2A8E-4A7C-A933-0CB6AB6BAFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57CCC07-2A8E-4A7C-A933-0CB6AB6BAFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57CCC07-2A8E-4A7C-A933-0CB6AB6BAFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57CCC07-2A8E-4A7C-A933-0CB6AB6BAFFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
