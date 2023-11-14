@@ -1,10 +1,8 @@
 using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 using Dapper;
 using System.Data;
 using NoteDown.Data.IModels;
 using Microsoft.Extensions.Logging;
-using System.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace NoteDown.Data.Models
