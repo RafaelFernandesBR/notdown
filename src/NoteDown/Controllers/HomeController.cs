@@ -44,7 +44,12 @@ namespace NoteDown.Controllers
         {
             try
             {
-                var updatedNota = _dataModel.UpdateNots(id, nota);
+                var notInclud = new NotsInput();
+                notInclud.Id = id;
+                notInclud.Conteudo = nota;
+
+                var updatedNota = _dataModel.UpdateNots(notInclud);
+
                 return Json(updatedNota);
             }
             catch (Exception ex)
