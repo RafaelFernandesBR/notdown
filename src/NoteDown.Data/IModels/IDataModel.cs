@@ -6,6 +6,6 @@ namespace NoteDown.Data.IModels
     {
         NotsOutput GetOne(string id);
         NotsInput AddNots(NotsInput nota);
-        NotsInput UpdateNots(string id, string nota);
+        NotsInput UpdateNots(NotsInput nota);
     }
 }

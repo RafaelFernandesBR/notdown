@@ -48,6 +48,7 @@ namespace NoteDown.Data.Models
         {
             int maxAttempts = 3; // Número máximo de tentativas para gerar um ID único
             int currentAttempt = 1;
+            string query = $"INSERT INTO {TableNots} (id, conteudo) VALUES (@Id, @Conteudo)";
 
             using (IDbConnection connection = conm)
             {
@@ -56,8 +57,12 @@ namespace NoteDown.Data.Models
                     try
                     {
                         nota.Id = GenerateUniqueID();
-                        string query = $"INSERT INTO {TableNots} (id, conteudo) VALUES (@Id, @Conteudo)";
-                        connection.Execute(query, nota);
+
+                        var parametros = new DynamicParameters();
+                        parametros.Add("@Id", nota.Id);
+                        parametros.Add("@Conteudo", nota.Conteudo);
+
+                        connection.Execute(query, parametros);
 
                         // Se a inserção for bem-sucedida, retornamos a nota
                         return nota;
@@ -81,20 +86,20 @@ namespace NoteDown.Data.Models
             }
         }
 
-        public NotsInput UpdateNots(string id, string nota)
+        public NotsInput UpdateNots(NotsInput nota)
         {
             string query = $"UPDATE {TableNots} SET conteudo = @Conteudo WHERE id = @Id";
 
             var parametros = new DynamicParameters();
-            parametros.Add("@Id", id);
-            parametros.Add("@Conteudo", nota);
+            parametros.Add("@Id", nota.Id);
+            parametros.Add("@Conteudo", nota.Conteudo);
 
             using (IDbConnection connection = conm)
             {
                 try
                 {
                     connection.Execute(query, parametros);
-                    return new NotsInput { Id = id, Conteudo = nota };
+                    return nota;
                 }
                 catch (Exception ex)
                 {
