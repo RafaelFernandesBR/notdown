@@ -14,5 +14,4 @@ RUN dotnet publish -c release -o /app --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 WORKDIR /app
 COPY --from=build /app ./
-#VOLUME ["/app/conect-sql.json"]
 ENTRYPOINT ["dotnet", "NoteDown.dll"]
