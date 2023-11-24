@@ -36,7 +36,9 @@ jobs:
         script: |
             cd ./repo/notdown/
             rm -f ./src/NoteDown/appsettings.json
-            printf "%s" "${{ secrets.JSONAPLICATION }}" > ./src/NoteDown/appsettings.json
+            cat <<EOF > ./src/NoteDown/appsettings.json
+            ${{ secrets.JSONAPLICATION }}
+            EOF
             docker-compose down
             docker-compose build
             docker-compose up -d
