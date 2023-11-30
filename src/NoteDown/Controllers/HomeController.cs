@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
 using NoteDown.Data.IModels;
 using NoteDown.Data.Models;
 using NoteDown.Models;
