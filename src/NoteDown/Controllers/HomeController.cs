@@ -34,6 +34,7 @@ namespace NoteDown.Controllers
             {
                 // Se estiverem em cache, retornar os dados do cache diretamente
                 ViewBag.Nota = cachedData;
+                _logger.LogInformation($"Retornando nota com o id {id} do cache");
                 return View();
             }
 
