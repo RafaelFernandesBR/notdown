@@ -6,7 +6,7 @@ using System.Data;
 using Dapper;
 using Xunit;
 
-namespace SeuProjetoDeTestes
+namespace NoteDown.data.test.Model
 {
     public class DataModelTests
     {
