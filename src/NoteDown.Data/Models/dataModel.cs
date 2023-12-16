@@ -4,21 +4,19 @@ using System.Data;
 using NoteDown.Data.IModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using System.Data.Common;
 
 namespace NoteDown.Data.Models
 {
     public class DataModel : IDataModel
     {
-        private MySqlConnection conm { get; set; }
-        private readonly ILogger<DataModel> _logger;
+        private readonly IDbConnection _connection; private readonly ILogger<DataModel> _logger;
         string TableNots;
 
-        public DataModel(ILogger<DataModel> logger, IConfiguration configuration)
+        public DataModel(ILogger<DataModel> logger, IDbConnection connection)
         {
-            string? connectionString = configuration.GetConnectionString("MySqlConnection");
-
-            this.conm = new MySqlConnection(connectionString);
-            _logger = logger;
+            _connection = connection ?? throw new ArgumentNullException(nameof(connection));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             TableNots = "nots";
         }
 
@@ -29,7 +27,7 @@ namespace NoteDown.Data.Models
             var parametros = new DynamicParameters();
             parametros.Add("@id", id);
 
-            using (IDbConnection connection = conm)
+            using (IDbConnection connection = _connection)
             {
                 try
                 {
@@ -50,7 +48,7 @@ namespace NoteDown.Data.Models
             int currentAttempt = 1;
             string query = $"INSERT INTO {TableNots} (id, conteudo) VALUES (@Id, @Conteudo)";
 
-            using (IDbConnection connection = conm)
+            using (IDbConnection connection = _connection)
             {
                 while (currentAttempt <= maxAttempts)
                 {
@@ -94,7 +92,7 @@ namespace NoteDown.Data.Models
             parametros.Add("@Id", nota.Id);
             parametros.Add("@Conteudo", nota.Conteudo);
 
-            using (IDbConnection connection = conm)
+            using (IDbConnection connection = _connection)
             {
                 try
                 {
