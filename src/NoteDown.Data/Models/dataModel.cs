@@ -1,16 +1,14 @@
-using MySql.Data.MySqlClient;
 using Dapper;
 using System.Data;
 using NoteDown.Data.IModels;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
-using System.Data.Common;
 
 namespace NoteDown.Data.Models
 {
     public class DataModel : IDataModel
     {
-        private readonly IDbConnection _connection; private readonly ILogger<DataModel> _logger;
+        private readonly IDbConnection _connection;
+        private readonly ILogger<DataModel> _logger;
         string TableNots;
 
         public DataModel(ILogger<DataModel> logger, IDbConnection connection)
