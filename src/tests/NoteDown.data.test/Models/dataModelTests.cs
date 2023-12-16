@@ -61,6 +61,29 @@ namespace SeuProjetoDeTestes
             Assert.NotNull(result);
             Assert.NotNull(result.Id);
             Assert.Equal(notaInput.Conteudo, result.Conteudo);
+            Assert.True((result.Id?.Length == 16) ? true : false);
+        }
+
+        [Fact]
+        public void UpdateNots_ShouldReturnInsertedNote()
+        {
+            // Arrange
+            string idDeTeste = "05cdf56cc6524f24";
+            var notaInput = new NotsInput { Id = idDeTeste, Conteudo = "Conteudo de Teste" };
+
+            // Configurar o retorno do Execute para simular uma inserção bem-sucedida
+            _connectionMock.SetupDapper(C => C.Execute(It.IsAny<string>(), It.IsAny<object>(), null, null, null))
+            .Returns(1);
+
+            var dataModel = new DataModel(_loggerMock.Object, _connectionMock.Object);
+
+            // Act
+            var result = dataModel.UpdateNots(notaInput);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(notaInput.Id, result.Id);
+            Assert.Equal(notaInput.Conteudo, result.Conteudo);
         }
 
     }
