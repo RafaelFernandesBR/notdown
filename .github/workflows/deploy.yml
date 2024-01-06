@@ -39,7 +39,7 @@ jobs:
             cat <<EOF > ./src/NoteDown/appsettings.json
             ${{ secrets.JSONAPLICATION }}
             EOF
-            docker-compose down
-            docker-compose build
-            docker-compose up -d
+            docker compose down
+            docker compose build
+            docker compose up -d
             docker logs down
