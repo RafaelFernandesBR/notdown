@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
 using NoteDown.Data.IModels;
 using NoteDown.Data.Models;
 using NoteDown.Models;
@@ -34,6 +33,7 @@ namespace NoteDown.Controllers
             {
                 // Se estiverem em cache, retornar os dados do cache diretamente
                 ViewBag.Nota = cachedData;
+                _logger.LogInformation($"Retornando nota com o id {id} do cache");
                 return View();
             }
 
